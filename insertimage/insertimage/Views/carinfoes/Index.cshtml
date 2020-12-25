@@ -1,0 +1,45 @@
+﻿@model IEnumerable<insertimage.Models.carinfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carimage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carimage)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.carid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.carid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.carid })
+        </td>
+    </tr>
+}
+
+</table>

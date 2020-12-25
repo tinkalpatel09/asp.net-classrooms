@@ -1,0 +1,5 @@
+C:\.netframework\Database_Project_lab3\Database_Project_lab3\bin\Debug\Database_Project_lab3.dacpac
+C:\.netframework\Database_Project_lab3\Database_Project_lab3\bin\Debug\Database_Project_lab3.dll
+C:\.netframework\Database_Project_lab3\Database_Project_lab3\bin\Debug\Database_Project_lab3.pdb
+C:\.netframework\Database_Project_lab3\Database_Project_lab3\obj\Debug\Database_Project_lab3.dll
+C:\.netframework\Database_Project_lab3\Database_Project_lab3\obj\Debug\Database_Project_lab3.pdb

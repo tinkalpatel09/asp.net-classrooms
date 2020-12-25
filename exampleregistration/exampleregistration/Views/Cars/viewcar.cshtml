@@ -1,0 +1,103 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<exampleregistration.Models.Car>
+
+
+@{
+    ViewBag.Title = "viewcar";
+}
+    @*<h3>Welcome.. @Session["FirstName"]</h3>*@
+<h1 class="text-center">Our Vehicle Inventory</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>you Successfully book a car!</strong>
+        </div>
+    }
+    <div class="container" style="height:1150px; ">
+
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                @if (TempData["bill"] == null)
+                {
+
+                    <h3>
+                        Total Bill: 0 $
+                    </h3>
+                }
+                else
+                {
+                    <h3> Total Bill: @TempData["bill"] $</h3>
+
+                }
+
+            </div>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <h3 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> <span class="btn btn-info">@Html.ActionLink("Check Out", "checkout", "Cars")</span></h3>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="row" style="margin-bottom:40px">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-sm-4 col-md-4" style="height:auto;margin-top:30px">
+                        <h1 style="color:#000000; font-family:'Arial';margin-top:10px;margin-bottom:30px;text-align:center">@item.CarType</h1>
+                        <img src="@Url.Content(item.ImagePath)" style=" height:100%;width:100%;align-content:center ;border-radius:0px" />
+                        <p style="color:#000000; font-family:'Aria';font-size:20px;margin-top:20px;margin-bottom:20px;text-align:center">@item.CarModel </p>
+
+                        @Html.ActionLink("Book a Car", "BookaCar", new { id = item.CarId }, new { @class = "btn btn-primary btn-lg btn-block" })
+
+                        @*<div style="margin-left:160px">
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CarId }, new { @class = "btn btn-danger btn-sm" })
+                                 @Html.ActionLink("Edit", "EditCars", new { id = item.CarId })
+                            </div>*@
+
+                    </div>
+
+                }
+            }
+
+        </div>
+
+
+    </div>
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("viewcar", new { page }))
+            </div>
+    </div>
+
+    @*<div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("viewcar", new { page }))
+        </div>
+    </div>*@
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    @using (Html.BeginForm("Save", "rent", FormMethod.Post, new { id = "popupForm" }))
+    {
+        <div>
+            <h1>Car Rentail</h1>
+        </div>
+
+        <div class="form-group">
+            <label class="form-lable">Car Model</label>
+            <select class="form-control" id="CarModel" name="CarModel" placeholder="CarModel " required>
+                <option>Plese select</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-lable">customer id</label>
+            <input type="text" id="Cusid" name="Cusid" class="form-control" placeholder="custID" required />
+        </div>
+        <div class="form-group">
+            <label class="form-lable">customer name</label>
+            <input type="text" id="CustName" name="CustName" class="form-control" placeholder="custname" required />
+        </div>
+      
+        <div class="form-group">
+            <label class="form-lable">Rental Fee</label>
+            <input type="text" id="fee" name="fee" class="form-control" placeholder="Rental Fee" required />
+        </div>
+        <div class="form-group">
+            <label class="form-lable">Start Date</label>
+            <input type="date" id="sdate" name="sdate" class="form-control" placeholder="Rental Fee" required />
+        </div>
+        <div class="form-group">
+            <label class="form-lable">End date</label>
+            <input type="date" id="edate" name="edate" class="form-control" placeholder="Rental Fee" required />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="save" class="btn btn-success" />
+        </div>
+    }
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script>
+        getcar();
+        load(); 
+
+        function load() {
+            $("#custid").attr("disabled", "disabled");
+            $("#custname").attr("disabled", "disabled");
+            $("#fee").attr("disabled", "disabled");
+            $("#sdate").attr("disabled", "disabled");
+             $("#edate").attr("disabled", "disabled");
+
+        }
+
+      
+        function getcar()
+        {
+
+            $.ajax({
+
+                type: 'GET',
+                url: 'rent/GetCar',
+                dataType: 'JSON',
+                success: function (data) {
+                    console.log(data);
+                    
+                    for (var i = 0; i < data.length; i++) {
+                        $("#CarModel").append($("<option/>", {
+                            text: data[i].CarModel
+                        }));
+                    }
+                }
+            });
+        }
+        getcustomer();
+
+         function getcustomer()
+         {
+             $("#Cusid").keyup(function (e) {
+
+                 $.ajax({
+
+                     type: 'POST',
+                     url: '/rent/Getid?id=' + $("#Cusid").val(),
+                       dataType: 'JSON',
+                          success: function (data) {
+                              console.log(data)
+                               $("#CustName").val(data)
+                           }
+                 });
+
+             });
+        }
+
+        $("#CarModel").change(function () {
+            available();
+        });
+
+        function available() {
+
+             $.ajax({
+
+                     type: 'POST',
+                     url: '/rent/Geavil?carmodel=' + $("#CarModel").val(),
+                       dataType: 'JSON',
+                          success: function (data) {
+                              console.log(data)
+                              var aval = data;
+
+                              if (aval == "yes") {
+                                  $("#custid").removeAttr('disabled');
+                                     $("#custname").removeAttr('disabled');
+                                     $("#fee").removeAttr('disabled');
+                                     $("#sdate").removeAttr('disabled');
+                                     $("#edate").removeAttr('disabled');
+                              }
+                              else {
+                                     $("#custid").attr("disabled", "disabled");
+            $("#custname").attr("disabled", "disabled");
+            $("#fee").attr("disabled", "disabled");
+            $("#sdate").attr("disabled", "disabled");
+             $("#edate").attr("disabled", "disabled");
+
+                              }
+                           }
+                 });
+
+
+        }
+
+     </script>
+
+ }

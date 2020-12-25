@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "UserCP";
+}
+
+<h2>UserCP</h2>
+<h3>@Session["FirstName"]</h3>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+    </ul>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4409f737fc254db2bd76e8c5c426ee8b" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.BillingDetail" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.BookingDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.Car" Width="1.5" PointX="2.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.Customer" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.LocationDetail" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalSystemDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CarRentalSystemDBModel.FK_BillingDetails_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalSystemDBModel.FK_BookingDetails_BillingDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="CarRentalSystemDBModel.FK_BookingDetails_Cars" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

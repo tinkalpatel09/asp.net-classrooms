@@ -1,0 +1,53 @@
+﻿@model exampleregistration.Models.Car
+@{
+    ViewBag.Title = "BookaCar";
+}
+<h2>BookaCar</h2>
+<br />
+<br />
+<br />
+@using (@Html.BeginForm())
+{
+
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+
+                <img style="min-height:200px; width:200px;" src="@Url.Content(Model.ImagePath)" />
+
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+
+                <h1>Car Name: @Model.CarType</h1>
+                <h2>Price: @Model.prize $</h2>
+                <h6>Car Model: @Model.CarModel</h6>
+
+
+                <input name="Id" hidden="hidden" value="@Model.CarId" />
+
+                @*<input type="number" name="qty" value="0" id="qty" />*@
+                <h3> Pick up Location:</h3> <input type="text" name="picuplocation" id="picuplocation" />
+                <h3> PickUp Date:</h3>   <input type="date" name="startdate" id="startdate" />
+                <h3> Return Date:</h3> <input type="date" name="enddate" id="enddate" />
+
+                <h3> Renter Age:</h3> <input type="number" name="Age" value="25" id="age" max="45" min="18" /><br />
+
+                @*@Html.ActionLink("Continue", "Contactdetails", new { @class = "btn btn-primary btn-lg btn-block" })*@
+                <input type="submit" value="Submit" class="btn btn-default" />
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+}
+

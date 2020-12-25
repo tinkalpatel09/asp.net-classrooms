@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeacherCourseDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CourseAssignments">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupNumber" Type="int" Nullable="false" />
+    <Property Name="AssignedDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseCode" />
+    </Key>
+    <Property Name="CourseCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="JobTitle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupNumber" />
+    </Key>
+    <Property Name="GroupNumber" Type="int" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CourseAssignments_Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="CourseAssignments" Type="Self.CourseAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseCode" />
+      </Principal>
+      <Dependent Role="CourseAssignments">
+        <PropertyRef Name="CourseCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssignments_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="CourseAssignments" Type="Self.CourseAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="CourseAssignments">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssignments_Groups">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="CourseAssignments" Type="Self.CourseAssignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GroupNumber" />
+      </Principal>
+      <Dependent Role="CourseAssignments">
+        <PropertyRef Name="GroupNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SaveCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="CourseTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="Duration" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="TeacherCourseDBModelStoreContainer">
+    <EntitySet Name="CourseAssignments" EntityType="Self.CourseAssignments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CourseAssignments_Courses" Association="Self.FK_CourseAssignments_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CourseAssignments" EntitySet="CourseAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssignments_Employees" Association="Self.FK_CourseAssignments_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="CourseAssignments" EntitySet="CourseAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssignments_Groups" Association="Self.FK_CourseAssignments_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="CourseAssignments" EntitySet="CourseAssignments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,209 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<exampleregistration.Models.Car>
+
+
+@{
+    ViewBag.Title = "viewcar";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="height:1150px; ">
+        <div class="row">
+            <div class="col-lg-12" style="height:100px; border:1px solid solid; ">
+                @if (TempData["msg"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Success! your car have been booked. Please show your email at counter</strong> 
+                    </div>
+                }
+
+                @*<img src="~/Content/img/c2.gif" style="width:100%; height:100%" />*@
+
+
+            </div>
+
+        </div>
+        <div style="margin-top: 0px; display: grid; grid-template-columns: 1fr 1fr">
+            <div style="text-align:center;">
+                <h1 style="font-size:24px;">Tesla</h1>
+                <img src="~/Image/10.png" alt="car" width="100%" />
+            </div>
+            
+
+            <div style="text-align:center;">
+                <h1 style="font-size:24px;">Charger</h1>
+                <img src="~/Image/7.png" alt="car" width="100%" />
+            </div>
+            
+
+
+
+        </div>
+
+
+
+
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr">
+                <div style="text-align:center;">
+
+                    <h1> FROM PICKUP TRUCKS TO CARGO VANS, WE’LL GET YOU MOVING.</h1>
+                    <h2 style="margin-top:20px;">
+                        Whether you need a truck for a move or commercial purposes, our pickup trucks, cargo vans and cube vans are available for daily, weekly or monthly rentals. We have the right trucks, at a great value, available when and where you need them.
+                    </h2>
+                </div>
+
+
+                <div style="text-align:center;">
+
+                    <h1>  HOURLY CAR RENTAL FOR LIVES ON THE GO.</h1>
+                    <h2 style="margin-top:20px;">
+                        CarShare is a convenient program that gets you moving when you need it. Whether you're running errands, visiting family and friends, or taking a business trip, you can rent a variety of vehicles 24/7. We help you go where you want, when you want.
+                    </h2>
+                </div>
+
+
+
+            </div>
+
+
+
+
+            <div>
+                <div style="text-align:center;">
+                    <img style="margin:auto 10px;" src="~/Image/19.png" alt="image" />
+                    <h1>CAR RENTAL AND MUCH MORE</h1>
+                    <p style="margin-top:20px;">
+                        Drivepro Rent-A-Car provides more than just traditional car rental. We're your global transportation solution.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr">
+                <div style="text-align:center;">
+                    <img width="100%" style="margin:auto 10px;" src="~/Image/8.png" alt="image" />
+                    <h1>WEEKEND CAR RENTAL SPECIALE</h1>
+                    <p style="margin-top:20px;">
+                        Friday through Monday rentals
+                    </p><p>
+                        Participating neighbourhood locations
+                    </p><p>
+                        150 kilometres per day included; $0.20 for each additional kilometre
+                    </p><p>
+                        Offer applies to base rate (time and mileage) only
+                    </p>
+                </div>
+
+                <div style="text-align:center;">
+                    <img style="margin:auto 10px;" src="~/Image/caamember.jpeg" alt="image" />
+                    <h1>Enjoy CAA Member Exclusive Benefits</h1>
+                    <p style="margin-top:20px;">
+                        We are proud to be CAA's Preferred Car Rental Partner.
+                    </p>
+                </div>
+
+                <div style="text-align:center;">
+                    <img width="100%" style="margin:auto 10px;" src="~/Image/17.png" alt="image" />
+                    <h1>Drivepro Business Rentals</h1>
+                    <p style="margin-top:20px;">
+                        Our custom rental programs are designed to meet your company's needs.
+                        We offer long-term car rentals, group car rentals and car rental programs for meetings.
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top:40px;text-align:center;">
+                <h2>Meet the Fleet</h2>
+                <h4>Whatever you need, whenever you need it.</h4>
+                <div style="margin-top: 20px; display: grid; grid-template-columns: auto auto auto;">
+                    <img src="~/Image/4.png" alt="car" width="100%" />
+                    <img src="~/Image/13.png" alt="car" width="100%" />
+                    <img src="~/Image/16.png" alt="car" width="100%" />
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr">
+                <div style="text-align:center;">
+                    <h1>What Is CarShare?</h1>
+                    <img src="~/Image/share1.jpeg" alt="car" width="100%" />
+                    <p style="margin-top:20px;">
+                        Drivepro CarShare is an automated way to rent a vehicle by the hour, the day, or overnight.
+                        Vehicles are parked in your community–where you live and where you work–and are accessible 24/7.
+                    </p>
+                </div>
+
+
+
+                <div style="text-align:center;">
+                    <h1>What's Included</h1>
+                    <img src="~/Image/share2.jpeg" alt="car" width="100%" />
+                    <p style="margin-top:20px;">
+                        Our low, hourly rental rate includes fuel, physical damage/liability protection and 24/7 member service support.
+                    </p>
+                </div>
+
+
+                <div style="text-align:center;">
+                    <h1>Great Variety</h1>
+                    <img src="~/Image/share3.jpeg" alt="car" width="100%" />
+                    <p style="margin-top:20px;">
+                        We offer a wide selection of vehicles for whatever your day has in store. Our diverse fleet includes hybrids, pick-up trucks, sedans and SUVs.
+                    </p>
+                </div>
+
+
+            </div>
+
+
+
+
+            <div style="text-align:center;background-color:#000000;color:#ffffff;">
+
+                <div style="padding:50px">
+
+                    <h1 style="margin-top:40px;">A Greener Way</h1>
+                    <p style="margin-top:20px;">
+                        Enterprise is committed to preserving the environment. That's why we've been delivering transportation
+                        alternatives right where people work and live since 1957. Our CarShare program is an
+                        extension of that commitment. We have a great variety of fuel-efficient passenger cars, as well as
+                        electric vehicles in some locations, that are friendlier to the environment while still getting you
+                        where you need to be.
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div id="container" style="margin-left: 20px">
+            <p></p>
+            <p></p>
+            @*<div class="pagination" style="margin-left: 400px">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("viewcar", new { page }))
+            </div>*@
+        </div>
+</body>
+</html>
+
+

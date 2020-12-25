@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "checkout";
+}
+
+<h2>checkout</h2>
+ @if (TempData["msg"] != null)
+ {
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> TempData["msg"]
+    </div>}
+@if (TempData["Bookcar"] != null)
+{
+
+   
+    <table class="table table-responsive">
+
+        <thead>
+            <tr>
+                <th>CAR ID</th>
+                <th>Car NAME</th>
+                <th>Customer Id</th>
+                <th>PRICE</th>
+                <th>BILL</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in TempData["Bookcar"] as List<exampleregistration.Models.Bookcar>)
+            {
+                <h3>hello  <b>@item.custname</b>    this is your checkList. have a greate Journey  </h3>
+                <tr>
+                    <td>@item.carid</td>
+                    <td>@item.cartype</td>
+                    <td>@item.custid</td>
+                    <td>@item.Prize</td>
+                    <td>@item.bill</td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("Remove",new {id=item.carid })"> &#10008; </a>
+                    </td>
+
+                </tr>
+
+            }
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                @*<td>@TempData["total"]</td>*@
+                <td>@TempData["bill"]</td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+
+
+
+
+}
+else
+{
+    <h2 style="color:red"> Cart is empty....</h2>
+    @Html.ActionLink("go Back", "Index", "Home")
+}
+
+@if(TempData["Bookcar"]!= null)
+{
+    using (Html.BeginForm())
+    {
+        <input type="submit" value="Rent now" class="btn btn-primary">
+    }
+}
